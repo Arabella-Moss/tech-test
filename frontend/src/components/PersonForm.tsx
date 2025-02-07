@@ -75,35 +75,94 @@ export default function PersonForm() {
     const inputClassName = clsx("text-black");
     const errorClassName = clsx("text-red-400");
 
-    return (
-        <div className="min-w-96">
-            <div>
-                <h1>Person</h1>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-                <label className={labelClassName} htmlFor="id">ID</label>
-                <input className={inputClassName} type="text" id="id" {...register("id")} />
-                <p className={errorClassName}>{errors.id?.message}</p>
-
-                {/* TASK 1 Add more attribute fields here */}
-
-                <div className="flex justify-between mt-4">
-                    <button
-                        type="submit"
-                        onClick={() => setIsUpdating(false)}
-                    >
-                        Create
-                    </button>
-                    <button
-                        type="submit"
-                        onClick={() => setIsUpdating(true)}
-                    >
-                        Update
-                    </button>
-                </div>
-            </form>
-
+   
             {successMessage && <p className="text-green-500 mt-4">{successMessage}</p>}
         </div>
-    );
+    
 }
+
+return (
+    <div className="min-w-96">
+        <div>
+            <h1 className="text-purple-600 text-2xl text-center font-sans font-bold">
+                Personal Details
+            </h1>
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col -ml-20 mt-8">
+            <label className="text-purple-600 font-semibold" htmlFor="id">
+                ID
+            </label>
+            <input
+                className="border p-2 rounded"
+                type="text"
+                id="id"
+                {...register("id", { required: "ID is required" })}
+            />
+            <p className="text-red-500">{errors.id?.message}</p>
+
+            <label className="text-purple-600 font-semibold" htmlFor="firstName">
+                First Name
+            </label>
+            <input
+                className="border p-2 rounded"
+                type="text"
+                id="firstName"
+                {...register("firstName", { required: "First name is required" })}
+            />
+            <p className="text-red-500">{errors.firstName?.message}</p>
+
+            <label className="text-purple-600 font-semibold" htmlFor="lastName">
+                Last Name
+            </label>
+            <input
+                className="border p-2 rounded"
+                type="text"
+                id="lastName"
+                {...register("lastName", { required: "Last name is required" })}
+            />
+            <p className="text-red-500">{errors.lastName?.message}</p>
+
+            <label className="text-purple-600 font-semibold" htmlFor="dateOfBirth">
+                Date of Birth
+            </label>
+            <input
+                className="border p-2 rounded"
+                type="date"
+                id="dateOfBirth"
+                {...register("dateOfBirth", { required: "Date of birth is required" })}
+            />
+            <p className="text-red-500">{errors.dateOfBirth?.message}</p>
+
+            <label className="text-purple-600 font-semibold" htmlFor="email">
+                Email
+            </label>
+            <input
+                className="border p-2 rounded"
+                type="email"
+                id="email"
+                {...register("email", { required: "Email is required" })}
+            />
+            <p className="text-red-500">{errors.email?.message}</p>
+
+            <div className="flex justify-between mt-4 text-purple-600 font-semibold">
+                <button
+                    type="submit"
+                    onClick={() => setIsUpdating(false)}
+                    className="bg-purple-600 text-white font-bold py-2 px-4 rounded-full hover:bg-purple-700 transition duration-200"
+                >
+                    Create
+                </button>
+                <button
+                    type="submit"
+                    onClick={() => setIsUpdating(true)}
+                    className="bg-purple-600 text-white font-bold py-2 px-4 rounded-full hover:bg-purple-700 transition duration-200"
+                >
+                    Update
+                </button>
+            </div>
+        </form>
+
+        {successMessage && <p className="text-green-500 mt-4">{successMessage}</p>}
+    </div>
+);
+

@@ -19,7 +19,7 @@ public class PersonController {
     // Change these to be the URL paths you want
     private final String getPath = "people"; 
     private final String postPath = "people";
-    private final String putpath = "/people{id}"
+    private final String putPath = "/people{id}";
 
 
     // retrieves list of all people from database
@@ -44,7 +44,7 @@ public class PersonController {
 
     // Task 3, updates details of an existing person identified by their ID
     @PutMapping(putPath)
-    public person updatePerson(@PathVariable("id") String id, @RequestBody Person personMode1) {
+    public Person updatePerson(@PathVariable("id") String id, @RequestBody Person personMode1) {
         return personService.updatePerson(id, personMode1);
     }
 
