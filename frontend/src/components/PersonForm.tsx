@@ -22,7 +22,7 @@ const putPath = "people";
 type FormFields = z.infer<typeof personSchema>;
 
 export default function PersonForm() {
-    // Form handling
+    // Form handling for creating and updating records
     const form = useForm<FormFields>({ resolver: zodResolver(personSchema) });
     const { register, handleSubmit, formState } = form;
     const { errors } = formState;
@@ -53,14 +53,19 @@ export default function PersonForm() {
             });
             if (response.ok) {
                 const json = await response.json()
-                // TASK 3
-                const dynamicSuccessMessage = "";
+
+                // TASK 3, shows success message after submitting form
+                const dynamicSuccessMessage = isUpdating
+                ? `Successfully updated person: ${json.firstName} ${json.lastName}`
+                : `Successfully created person: ${json.lastName} ${json.lastname}`
+
                 setSuccessMessage(dynamicSuccessMessage + JSON.stringify(json, null, 2));
             } else {
-                setSuccessMessage("Failed to create person");
+                setSuccessMessage("Failed to create or update person");
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            setSuccessMessage("An error occurred while processing this request");
         }
 
     }
