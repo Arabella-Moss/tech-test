@@ -6,9 +6,13 @@ import { z } from "zod";
 
 // TASK 2 is up to you on where you put the validaton
 
-// TASK 1
+// TASK 1, define schema to validate form inputs, must be strings with min length of 1 character
 const personSchema = z.object({
-    id: z.string().min(1),
+    id: z.string().min(1, "Must contain one character(s)"),
+    firstName: z.string().min(1, "Enter first name"),
+    lastName: z.string().min(1, "Enter last name"),
+    dateOfBirth: z.string().min(1, "Enter date of birth"),
+    email: z.string().min(1, "Enter email");
 })
 
 // TASK 1
