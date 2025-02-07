@@ -9,6 +9,13 @@ public class Person {
     @Id
     public String id;
 
-    // Task 1
+    public String firstName;
+    public String lastName;
+    public String dateOfBirth;
+    public String email;
+
 
 }
+
+// defines Person class as a representation of a person in the database, with fields for storing info
+// the entity and ID annotations integrate the class with a database, allowing for easy storage and retrieval 
