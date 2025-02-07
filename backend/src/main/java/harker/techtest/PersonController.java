@@ -17,8 +17,9 @@ public class PersonController {
     private PersonService personService;
 
     // Change these to be the URL paths you want
-    private final String getPath = "";
-    private final String postPath = "";
+    private final String getPath = "people"; 
+    private final String postPath = "people";
+    private final String putpath = "/people{id}"
 
     @GetMapping(getPath)
     public List<Person> getPeople() {
