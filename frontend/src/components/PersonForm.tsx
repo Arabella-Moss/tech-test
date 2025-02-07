@@ -15,9 +15,9 @@ const personSchema = z.object({
     email: z.string().min(1, "Enter email");
 })
 
-// TASK 1
-const postPath = "";
-const putPath = "";
+// TASK 1, ensure form sends data to correct API endpoints
+const postPath = "/people"; 
+const putPath = "people"; 
 
 type FormFields = z.infer<typeof personSchema>;
 
